@@ -1,0 +1,32 @@
+/* Font loading */
+
+/* Inter — body text, loaded from Google Fonts CDN */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* Acid Grotesk — headings, self-hosted */
+/* Note: Acid Grotesk is a commercial typeface. These files are from the xpression design system. */
+/* If you don't have a licence, remove this file and headings will fall back to the sans-serif stack. */
+
+@font-face {
+  font-family: "Acid Grotesk";
+  src: url("./fonts/AcidGrotesk-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Acid Grotesk";
+  src: url("./fonts/AcidGrotesk-Medium.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Acid Grotesk";
+  src: url("./fonts/AcidGrotesk-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

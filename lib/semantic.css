@@ -2,6 +2,7 @@
 /* PicoCSS-style semantic CSS library using xpression design tokens */
 
 /* Foundation */
+@import "./fonts.css";
 @import "./tokens.css";
 @import "./reset.css";
 
