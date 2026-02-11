@@ -1,0 +1,51 @@
+/* Group — role="group" for inline button/input groups (a la PicoCSS) */
+/* Usage: <div role="group"><button>A</button><button>B</button></div> */
+/* Usage: <fieldset role="group"><input type="search"><button>Go</button></fieldset> */
+
+[role="group"] {
+  display: inline-flex;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove intermediate border-radius */
+[role="group"] > :not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
+[role="group"] > :first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+[role="group"] > :last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Collapse borders between items */
+[role="group"] > :not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Active/current item in a group */
+[role="group"] > [aria-current="true"],
+[role="group"] > [aria-pressed="true"] {
+  z-index: 1;
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+  border-color: var(--color-primary-600);
+}
+
+/* Form group: fieldset containing an input stretches full width */
+fieldset[role="group"]:has(> input),
+fieldset[role="group"]:has(> select) {
+  width: 100%;
+}
+
+fieldset[role="group"] > input,
+fieldset[role="group"] > select {
+  flex: 1;
+  min-width: 0;
+}

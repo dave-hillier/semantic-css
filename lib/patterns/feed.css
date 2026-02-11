@@ -1,0 +1,50 @@
+/* Feed — role="feed" activity stream */
+/* Usage: <div role="feed" aria-label="Notifications"><article>...</article></div> */
+
+[role="feed"] {
+  display: flex;
+  flex-direction: column;
+}
+
+[role="feed"] > article {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  box-shadow: none;
+}
+
+[role="feed"] > article:last-child {
+  border-bottom: none;
+}
+
+[role="feed"] > article > header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-bottom: none;
+}
+
+[role="feed"] > article > header time {
+  margin-left: auto;
+  font-size: var(--font-size-1);
+  color: var(--color-muted-foreground);
+}
+
+[role="feed"] > article > section {
+  padding: 0 1rem 0.75rem;
+  font-size: var(--font-size-3);
+}
+
+[role="feed"] > article > footer {
+  padding: 0 1rem 0.75rem;
+  border-top: none;
+  font-size: var(--font-size-2);
+  color: var(--color-muted-foreground);
+}
+
+/* Unread state */
+[role="feed"] > article[aria-current="true"] {
+  background-color: var(--color-muted);
+}

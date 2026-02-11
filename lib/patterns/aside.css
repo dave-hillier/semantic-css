@@ -1,0 +1,80 @@
+/* Aside — sidebar and supplementary content */
+
+aside {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  font-size: var(--font-size-2);
+}
+
+aside nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 1px solid var(--color-border);
+  margin-left: 0.5rem;
+}
+
+aside nav li {
+  margin-bottom: 0;
+}
+
+aside nav a {
+  display: block;
+  margin-left: -1px;
+  padding: 0.35rem 0.75rem;
+  border-left: 2px solid transparent;
+  border-radius: 0;
+  text-decoration: none;
+  color: var(--color-muted-foreground);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+aside nav a:hover {
+  color: var(--color-foreground);
+  border-left-color: var(--color-neutral-500);
+}
+
+aside nav a[aria-current="page"],
+aside nav a.active {
+  color: var(--color-primary);
+  border-left-color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+aside details {
+  border: none;
+  border-radius: 0;
+}
+
+aside details + details {
+  margin-top: 0;
+  border-radius: 0;
+}
+
+aside details summary {
+  font-weight: var(--font-weight-medium);
+  padding: 0.5rem 0.25rem;
+}
+
+aside details summary:hover {
+  background: none;
+  color: var(--color-foreground);
+}
+
+aside dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 0.75rem;
+  margin: 0;
+}
+
+aside dt {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-muted-foreground);
+}
+
+aside dd {
+  margin: 0;
+}

@@ -1,0 +1,18 @@
+/* Separator — horizontal and vertical dividers */
+/* Horizontal: <hr> (already styled in typography.css) */
+/* Vertical: <hr aria-orientation="vertical"> or [role="separator"] */
+
+[role="separator"] {
+  background-color: var(--color-border);
+  flex-shrink: 0;
+}
+
+[role="separator"]:not([aria-orientation="vertical"]) {
+  height: 1px;
+  width: 100%;
+}
+
+[role="separator"][aria-orientation="vertical"] {
+  width: 1px;
+  align-self: stretch;
+}

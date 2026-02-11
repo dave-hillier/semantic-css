@@ -1,0 +1,28 @@
+/* Toggle — aria-pressed button pattern */
+/* Usage: <button aria-pressed="true">Bold</button> */
+
+button[aria-pressed],
+[role="button"][aria-pressed] {
+  background-color: transparent;
+  color: var(--color-muted-foreground);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+button[aria-pressed]:hover,
+[role="button"][aria-pressed]:hover {
+  background-color: var(--color-muted);
+  color: var(--color-muted-foreground);
+}
+
+button[aria-pressed="true"],
+[role="button"][aria-pressed="true"] {
+  background-color: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+
+button[aria-pressed="true"]:hover,
+[role="button"][aria-pressed="true"]:hover {
+  background-color: var(--color-accent);
+  opacity: 0.9;
+}

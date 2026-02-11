@@ -1,0 +1,53 @@
+/* Listbox — role="listbox" / role="option" */
+/* Usage: <ul role="listbox" aria-label="Select item"><li role="option">...</li></ul> */
+
+[role="listbox"] {
+  list-style: none;
+  padding: 0.25rem;
+  margin: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-background);
+  max-height: 16rem;
+  overflow-y: auto;
+}
+
+[role="listbox"] > [role="option"] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  font-size: var(--font-size-3);
+  line-height: var(--line-height-4);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.15s;
+  margin-bottom: 0;
+}
+
+[role="listbox"] > [role="option"]:hover {
+  background-color: var(--color-muted);
+}
+
+[role="listbox"] > [role="option"][aria-selected="true"] {
+  background-color: var(--color-secondary);
+  color: var(--color-accent-foreground);
+  font-weight: var(--font-weight-medium);
+}
+
+[role="listbox"] > [role="option"]:focus-visible,
+[role="listbox"] > [role="option"].focus {
+  outline: 2px solid var(--color-ring);
+  outline-offset: -2px;
+}
+
+[role="listbox"] > [role="option"][aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Option description text */
+[role="option"] > small {
+  margin-left: auto;
+  color: var(--color-muted-foreground);
+}

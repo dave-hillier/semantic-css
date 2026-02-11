@@ -1,0 +1,140 @@
+/* Menu — role="menu" / role="menubar" / role="menuitem" */
+/* Usage: <ul role="menu" aria-label="Actions"><li role="menuitem">...</li></ul> */
+/* Menubar: <nav><ul role="menubar"><li role="menuitem">...</li></ul></nav> */
+
+[role="menu"] {
+  list-style: none;
+  padding: 0.25rem;
+  margin: 0;
+  min-width: 8rem;
+  background-color: var(--color-popover);
+  color: var(--color-popover-foreground);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+[role="menu"] > [role="menuitem"],
+[role="menu"] > li > [role="menuitem"] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.375rem 0.5rem;
+  font-size: var(--font-size-3);
+  line-height: var(--line-height-4);
+  color: var(--color-foreground);
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+  text-decoration: none;
+  cursor: pointer;
+  height: auto;
+  transition: background-color 0.15s;
+}
+
+[role="menu"] > [role="menuitem"]:hover,
+[role="menu"] > li > [role="menuitem"]:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-accent-foreground);
+}
+
+[role="menu"] > [role="menuitem"]:focus-visible,
+[role="menu"] > li > [role="menuitem"]:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: -2px;
+}
+
+[role="menu"] > [role="menuitem"][aria-disabled="true"],
+[role="menu"] > li > [role="menuitem"][aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Menuitem description / shortcut on the right */
+[role="menuitem"] > kbd {
+  margin-left: auto;
+  font-size: var(--font-size-1);
+  color: var(--color-muted-foreground);
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* SVG icons in menuitems */
+[role="menu"] svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: var(--color-muted-foreground);
+}
+
+/* Separator within menu */
+[role="menu"] > [role="separator"],
+[role="menu"] > li[role="separator"] {
+  height: 1px;
+  margin: 0.25rem 0;
+  background-color: var(--color-border);
+  width: 100%;
+}
+
+/* Menu group label */
+[role="menu"] > [role="group"]::before {
+  content: attr(aria-label);
+  display: block;
+  padding: 0.375rem 0.5rem 0.25rem;
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-muted-foreground);
+  letter-spacing: var(--letter-spacing-1);
+  text-transform: uppercase;
+}
+
+[role="menu"] > [role="group"] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Menubar — horizontal menu */
+[role="menubar"] {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+[role="menubar"] > [role="menuitem"],
+[role="menubar"] > li > [role="menuitem"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  font-size: var(--font-size-3);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-muted-foreground);
+  background: none;
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: none;
+  height: auto;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+[role="menubar"] > [role="menuitem"]:hover,
+[role="menubar"] > li > [role="menuitem"]:hover {
+  background-color: var(--color-muted);
+  color: var(--color-foreground);
+}
+
+[role="menubar"] > [role="menuitem"][aria-current="true"],
+[role="menubar"] > li > [role="menuitem"][aria-current="true"] {
+  color: var(--color-foreground);
+  background-color: var(--color-muted);
+}

@@ -1,0 +1,41 @@
+/* semantic-css — entry point */
+/* PicoCSS-style semantic CSS library using xpression design tokens */
+
+/* Foundation */
+@import "./tokens.css";
+@import "./reset.css";
+
+/* Elements */
+@import "./elements/typography.css";
+@import "./elements/buttons.css";
+@import "./elements/forms.css";
+@import "./elements/tables.css";
+@import "./elements/figure.css";
+
+/* WCAG APG Patterns */
+@import "./patterns/accordion.css";
+@import "./patterns/dialog.css";
+@import "./patterns/tabs.css";
+@import "./patterns/alert.css";
+@import "./patterns/breadcrumb.css";
+@import "./patterns/badge.css";
+@import "./patterns/card.css";
+@import "./patterns/progress.css";
+@import "./patterns/skeleton.css";
+@import "./patterns/aside.css";
+@import "./patterns/tooltip.css";
+@import "./patterns/dropdown.css";
+@import "./patterns/group.css";
+@import "./patterns/toggle.css";
+@import "./patterns/separator.css";
+@import "./patterns/avatar.css";
+@import "./patterns/nav.css";
+@import "./patterns/toolbar.css";
+@import "./patterns/menu.css";
+@import "./patterns/listbox.css";
+@import "./patterns/feed.css";
+@import "./patterns/app-shell.css";
+
+/* Taxonomy and animations */
+@import "./taxonomy.css";
+@import "./animations.css";

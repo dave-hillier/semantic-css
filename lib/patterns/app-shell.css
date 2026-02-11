@@ -1,0 +1,82 @@
+/* App Shell — full-page layout with header, sidebar, and main content */
+/* Usage:
+  <body class="app-shell">
+    <header>...</header>
+    <aside>...</aside>
+    <main>...</main>
+  </body>
+  or wrap in a div:
+  <div class="app-shell">
+    <header>...</header>
+    <aside>...</aside>
+    <main>...</main>
+  </div>
+*/
+
+.app-shell {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+.app-shell > header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 1rem;
+  height: 3.5rem;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-background);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app-shell > header nav {
+  border-bottom: none;
+  padding: 0;
+}
+
+.app-shell > aside {
+  grid-row: 2;
+  grid-column: 1;
+  width: 15rem;
+  padding: 0.5rem;
+  border-right: 1px solid var(--color-border);
+  background-color: var(--color-card);
+  position: sticky;
+  top: 3.5rem;
+  height: calc(100vh - 3.5rem);
+  overflow-y: auto;
+  border-radius: 0;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+}
+
+.app-shell > main {
+  grid-row: 2;
+  grid-column: 2;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+/* Without sidebar — full width */
+.app-shell:not(:has(> aside)) > main {
+  grid-column: 1 / -1;
+}
+
+/* Footer spans full width at bottom */
+.app-shell > footer {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-2);
+  color: var(--color-muted-foreground);
+}

@@ -1,0 +1,47 @@
+/* Taxonomy — shared variant intent classes */
+/* These are contextual color overrides applied via class names that describe */
+/* what an element IS (destructive, secondary) not how it looks. */
+/* Element-specific selectors are in their respective stylesheets. */
+/* This file defines fallback standalone behavior for custom elements. */
+
+.destructive {
+  --_taxonomy-bg: var(--color-destructive);
+  --_taxonomy-fg: var(--color-destructive-foreground);
+  --_taxonomy-border: var(--color-danger-200);
+}
+
+.info {
+  --_taxonomy-bg: var(--color-info);
+  --_taxonomy-fg: var(--color-info-foreground);
+  --_taxonomy-border: var(--color-info-200);
+}
+
+.success {
+  --_taxonomy-bg: var(--color-success);
+  --_taxonomy-fg: var(--color-success-foreground);
+  --_taxonomy-border: var(--color-success-200);
+}
+
+.warning {
+  --_taxonomy-bg: var(--color-warning);
+  --_taxonomy-fg: var(--color-warning-foreground);
+  --_taxonomy-border: var(--color-warning-200);
+}
+
+.secondary {
+  --_taxonomy-bg: var(--color-secondary);
+  --_taxonomy-fg: var(--color-secondary-foreground);
+  --_taxonomy-border: var(--color-neutral-300);
+}
+
+.outline {
+  --_taxonomy-bg: transparent;
+  --_taxonomy-fg: var(--color-foreground);
+  --_taxonomy-border: var(--color-border);
+}
+
+.ghost {
+  --_taxonomy-bg: transparent;
+  --_taxonomy-fg: var(--color-foreground);
+  --_taxonomy-border: transparent;
+}

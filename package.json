@@ -1,0 +1,10 @@
+{
+  "name": "@hyperexponential/semantic-css",
+  "version": "0.1.0",
+  "description": "PicoCSS-style semantic CSS library using xpression design tokens",
+  "main": "lib/semantic.css",
+  "files": [
+    "lib/",
+    "helpers/"
+  ]
+}

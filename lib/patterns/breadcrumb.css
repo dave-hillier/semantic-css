@@ -1,0 +1,41 @@
+/* Breadcrumb — nav[aria-label="Breadcrumb"] */
+
+nav[aria-label="Breadcrumb"] ol {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: var(--font-size-3);
+}
+
+nav[aria-label="Breadcrumb"] li {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+nav[aria-label="Breadcrumb"] li + li::before {
+  content: "/";
+  margin: 0 0.5rem;
+  color: var(--color-muted-foreground);
+}
+
+nav[aria-label="Breadcrumb"] a {
+  color: var(--color-muted-foreground);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+nav[aria-label="Breadcrumb"] a:hover {
+  color: var(--color-foreground);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+nav[aria-label="Breadcrumb"] [aria-current="page"] {
+  color: var(--color-foreground);
+  font-weight: var(--font-weight-medium);
+}

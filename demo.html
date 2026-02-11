@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semantic CSS Demo</title>
+  <link rel="stylesheet" href="lib/semantic.css">
+  <style>
+    /* Demo-only layout styles */
+    .demo-section { max-width: 48rem; margin: 2rem auto; padding: 0 1rem; }
+    .demo-section + .demo-section { margin-top: 3rem; }
+    .demo-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1rem; }
+    .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
+    .demo-swatch { padding: 0.5rem 1rem; border-radius: var(--radius); font-size: var(--font-size-2); }
+    .theme-switcher { display: inline-flex; border: 1px solid var(--color-border); border-radius: var(--radius); overflow: hidden; padding: 0; margin: 0; }
+    .theme-switcher button { border: none; border-radius: 0; background: transparent; color: var(--color-muted-foreground); padding: 0.375rem 0.75rem; font-size: var(--font-size-2); }
+    .theme-switcher button + button { border-left: 1px solid var(--color-border); }
+    .theme-switcher button[aria-pressed="true"] { background: var(--color-primary); color: var(--color-primary-foreground); }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <nav aria-label="Main" style="border-bottom: 1px solid var(--color-border);">
+    <ul>
+      <li><a href="#"><strong>Semantic CSS</strong></a></li>
+    </ul>
+    <ul>
+      <li><a href="#" aria-current="page">Components</a></li>
+      <li><a href="#">Tokens</a></li>
+      <li><a href="#">Patterns</a></li>
+      <li>
+        <details class="dropdown">
+          <summary role="button" class="ghost">More</summary>
+          <ul>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Changelog</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="demo-section">
+    <h1>Semantic CSS</h1>
+    <p>A PicoCSS-style semantic CSS library using xpression design tokens. No utility classes, no JS framework dependency. Just native HTML elements styled with design system tokens.</p>
+    <fieldset role="group" class="theme-switcher" aria-label="Theme">
+      <button aria-pressed="false" data-theme="light">Light</button>
+      <button aria-pressed="true" data-theme="system">System</button>
+      <button aria-pressed="false" data-theme="dark">Dark</button>
+    </fieldset>
+    <hr>
+  </div>
+
+  <!-- Typography -->
+  <div class="demo-section">
+    <h2>Typography</h2>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
+    <p>This is body text using <strong>Inter</strong> at 14px. It supports <strong>bold</strong>, <em>italic</em>, <a href="#">links</a>, <code>inline code</code>, <kbd>Ctrl+S</kbd>, <mark>highlighted text</mark>, and <small>small text</small>.</p>
+    <p>An abbreviation example: <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> compliance is important.</p>
+    <blockquote>
+      <p>This is a blockquote. It uses the border-left pattern with muted foreground color.</p>
+    </blockquote>
+    <pre><code>function greet(name: string) {
+  return `Hello, ${name}!`;
+}</code></pre>
+    <h3>Lists</h3>
+    <ul>
+      <li>Unordered list item one</li>
+      <li>Unordered list item two
+        <ul>
+          <li>Nested item</li>
+        </ul>
+      </li>
+      <li>Unordered list item three</li>
+    </ul>
+    <ol>
+      <li>Ordered list item one</li>
+      <li>Ordered list item two</li>
+      <li>Ordered list item three</li>
+    </ol>
+    <hr>
+  </div>
+
+  <!-- Figure -->
+  <div class="demo-section">
+    <h2>Figure</h2>
+    <figure>
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='200' viewBox='0 0 600 200'%3E%3Crect fill='%23f0f0f0' width='600' height='200'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='%23909090' font-family='sans-serif' font-size='16'%3E600 x 200 placeholder%3C/text%3E%3C/svg%3E" alt="Placeholder image">
+      <figcaption>Figure 1: A placeholder image with a caption. The figure element wraps media with descriptive text.</figcaption>
+    </figure>
+    <figure>
+      <blockquote>
+        <p>Design is not just what it looks like and feels like. Design is how it works.</p>
+      </blockquote>
+      <figcaption>-- Steve Jobs</figcaption>
+    </figure>
+    <hr>
+  </div>
+
+  <!-- Buttons -->
+  <div class="demo-section">
+    <h2>Buttons</h2>
+    <h3>Variants</h3>
+    <div class="demo-row">
+      <button>Primary</button>
+      <button class="secondary">Secondary</button>
+      <button class="destructive">Destructive</button>
+      <button class="outline">Outline</button>
+      <button class="ghost">Ghost</button>
+      <button class="link">Link</button>
+    </div>
+    <h3>Sizes</h3>
+    <div class="demo-row">
+      <button class="sm">Small</button>
+      <button>Default</button>
+      <button class="lg">Large</button>
+    </div>
+    <h3>States</h3>
+    <div class="demo-row">
+      <button disabled>Disabled</button>
+      <button aria-disabled="true">Aria Disabled</button>
+      <button aria-busy="true">Loading</button>
+    </div>
+    <hr>
+  </div>
+
+  <!-- Forms -->
+  <div class="demo-section">
+    <h2>Forms</h2>
+    <form onsubmit="event.preventDefault()">
+      <fieldset>
+        <legend>Personal Information</legend>
+
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+
+        <label for="email" style="margin-top: 0.75rem;">Email</label>
+        <input type="email" id="email" placeholder="you@example.com">
+
+        <label for="password" style="margin-top: 0.75rem;">Password</label>
+        <input type="password" id="password" placeholder="Enter password">
+
+        <label for="invalid-input" style="margin-top: 0.75rem;">Invalid Field</label>
+        <input type="text" id="invalid-input" aria-invalid="true" value="Bad input">
+
+        <label for="disabled-input" style="margin-top: 0.75rem;">Disabled Field</label>
+        <input type="text" id="disabled-input" disabled value="Cannot edit">
+      </fieldset>
+
+      <label for="select-demo" style="margin-top: 0.75rem;">Select</label>
+      <select id="select-demo">
+        <option>Option One</option>
+        <option>Option Two</option>
+        <option>Option Three</option>
+      </select>
+
+      <label for="textarea-demo" style="margin-top: 0.75rem;">Textarea</label>
+      <textarea id="textarea-demo" placeholder="Write something..."></textarea>
+
+      <h3>Checkbox and Radio</h3>
+      <div class="demo-row">
+        <label><input type="checkbox"> Accept terms</label>
+        <label><input type="checkbox" checked> Already checked</label>
+      </div>
+      <div class="demo-row">
+        <label><input type="radio" name="radio-group" checked> Option A</label>
+        <label><input type="radio" name="radio-group"> Option B</label>
+        <label><input type="radio" name="radio-group"> Option C</label>
+      </div>
+
+      <h3>Switch</h3>
+      <div class="demo-row">
+        <label>
+          <input type="checkbox" role="switch"> Enable notifications
+        </label>
+        <label>
+          <input type="checkbox" role="switch" checked> Dark mode
+        </label>
+      </div>
+
+      <h3>Other Inputs</h3>
+      <label for="file-demo">File Upload</label>
+      <input type="file" id="file-demo">
+
+      <label for="color-demo" style="margin-top: 0.75rem;">Color</label>
+      <input type="color" id="color-demo" value="#3e52db">
+
+      <label for="range-demo" style="margin-top: 0.75rem;">Range</label>
+      <input type="range" id="range-demo" min="0" max="100" value="50">
+
+      <div class="demo-row" style="margin-top: 1rem;">
+        <button type="submit">Submit</button>
+        <button type="reset" class="outline">Reset</button>
+      </div>
+    </form>
+    <hr>
+  </div>
+
+  <!-- Tables -->
+  <div class="demo-section">
+    <h2>Tables</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Role</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Alice Johnson</td>
+          <td><span data-badge class="success">Active</span></td>
+          <td>Admin</td>
+          <td>alice@example.com</td>
+        </tr>
+        <tr>
+          <td>Bob Smith</td>
+          <td><span data-badge class="warning">Pending</span></td>
+          <td>Editor</td>
+          <td>bob@example.com</td>
+        </tr>
+        <tr>
+          <td>Carol White</td>
+          <td><span data-badge class="destructive">Inactive</span></td>
+          <td>Viewer</td>
+          <td>carol@example.com</td>
+        </tr>
+      </tbody>
+      <caption>Table 1: Team members overview</caption>
+    </table>
+    <hr>
+  </div>
+
+  <!-- Accordion -->
+  <div class="demo-section">
+    <h2>Accordion</h2>
+    <details>
+      <summary>What is semantic CSS?</summary>
+      <p>Semantic CSS styles native HTML elements directly without utility classes. It uses class names for taxonomy (what something is) rather than presentation (how it looks).</p>
+    </details>
+    <details>
+      <summary>How does dark mode work?</summary>
+      <p>Add <code>class="dark"</code> to the <code>&lt;html&gt;</code> element. All color tokens automatically switch to their dark mode values.</p>
+    </details>
+    <details>
+      <summary>Can I use this with a framework?</summary>
+      <p>Yes. It is a single CSS import with no JavaScript dependency. It works with React, Vue, Svelte, plain HTML, or anything else that renders HTML.</p>
+    </details>
+    <hr>
+  </div>
+
+  <!-- Dialog -->
+  <div class="demo-section">
+    <h2>Dialog</h2>
+    <button onclick="document.getElementById('demo-dialog').showModal()">Open Dialog</button>
+    <dialog id="demo-dialog">
+      <header>
+        <h3>Confirm Action</h3>
+        <button onclick="document.getElementById('demo-dialog').close()" aria-label="Close">&times;</button>
+      </header>
+      <section>
+        <p>Are you sure you want to proceed? This action cannot be undone.</p>
+      </section>
+      <footer>
+        <button class="outline" onclick="document.getElementById('demo-dialog').close()">Cancel</button>
+        <button onclick="document.getElementById('demo-dialog').close()">Confirm</button>
+      </footer>
+    </dialog>
+    <hr>
+  </div>
+
+  <!-- Tabs -->
+  <div class="demo-section">
+    <h2>Tabs</h2>
+    <div role="tablist" aria-label="Demo tabs" id="demo-tablist">
+      <button role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1" tabindex="0">Overview</button>
+      <button role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2" tabindex="-1">Features</button>
+      <button role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3" tabindex="-1">Installation</button>
+    </div>
+    <div role="tabpanel" id="panel-1" aria-labelledby="tab-1" tabindex="0">
+      <p>This is the overview panel. It shows general information about the component.</p>
+    </div>
+    <div role="tabpanel" id="panel-2" aria-labelledby="tab-2" tabindex="0" hidden>
+      <p>The features panel lists all supported features including keyboard navigation, ARIA attributes, and responsive design.</p>
+    </div>
+    <div role="tabpanel" id="panel-3" aria-labelledby="tab-3" tabindex="0" hidden>
+      <p>To install, add <code>@import "semantic-css/lib/semantic.css";</code> to your main CSS file. No build step required.</p>
+    </div>
+    <hr>
+  </div>
+
+  <!-- Alerts -->
+  <div class="demo-section">
+    <h2>Alerts</h2>
+    <div role="alert">
+      Default alert with neutral styling.
+    </div>
+    <div role="alert" class="info" style="margin-top: 0.5rem;">
+      Informational alert: your changes have been saved.
+    </div>
+    <div role="alert" class="success" style="margin-top: 0.5rem;">
+      Success: the operation completed successfully.
+    </div>
+    <div role="alert" class="warning" style="margin-top: 0.5rem;">
+      Warning: please review before proceeding.
+    </div>
+    <div role="alert" class="destructive" style="margin-top: 0.5rem;">
+      Error: something went wrong. Please try again.
+    </div>
+    <hr>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="demo-section">
+    <h2>Breadcrumb</h2>
+    <nav aria-label="Breadcrumb">
+      <ol>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Category</a></li>
+        <li><span aria-current="page">Current Page</span></li>
+      </ol>
+    </nav>
+    <hr>
+  </div>
+
+  <!-- Badges -->
+  <div class="demo-section">
+    <h2>Badges</h2>
+    <div class="demo-row">
+      <span data-badge>Default</span>
+      <span data-badge class="secondary">Secondary</span>
+      <span data-badge class="outline">Outline</span>
+      <span data-badge class="destructive">Destructive</span>
+      <span data-badge class="info">Info</span>
+      <span data-badge class="success">Success</span>
+      <span data-badge class="warning">Warning</span>
+    </div>
+    <hr>
+  </div>
+
+  <!-- Cards -->
+  <div class="demo-section">
+    <h2>Cards</h2>
+    <div class="demo-grid">
+      <article>
+        <header>
+          <h4>Card Title</h4>
+          <p>Card description text</p>
+        </header>
+        <section>
+          <p>Card body content goes here. It can contain any HTML elements.</p>
+        </section>
+        <footer>
+          <button class="sm">Action</button>
+          <button class="sm outline">Cancel</button>
+        </footer>
+      </article>
+      <article>
+        <header>
+          <h4>Another Card</h4>
+          <p>With different content</p>
+        </header>
+        <section>
+          <p>Cards use the <code>article</code> element with header, section, and footer children.</p>
+        </section>
+      </article>
+    </div>
+    <hr>
+  </div>
+
+  <!-- Progress -->
+  <div class="demo-section">
+    <h2>Progress and Meter</h2>
+    <label for="progress-demo">Progress (60%)</label>
+    <progress id="progress-demo" value="60" max="100">60%</progress>
+    <label for="meter-demo" style="margin-top: 0.75rem;">Meter (optimum)</label>
+    <meter id="meter-demo" min="0" max="100" low="25" high="75" optimum="80" value="80">80%</meter>
+    <label for="meter-warning" style="margin-top: 0.75rem;">Meter (suboptimum)</label>
+    <meter id="meter-warning" min="0" max="100" low="25" high="75" optimum="80" value="50">50%</meter>
+    <hr>
+  </div>
+
+  <!-- Skeleton -->
+  <div class="demo-section">
+    <h2>Skeleton</h2>
+    <p>Elements with <code>aria-busy="true"</code> show a shimmer loading state:</p>
+    <div aria-busy="true" style="height: 1.5rem; width: 60%; margin-bottom: 0.5rem;">Loading text</div>
+    <div aria-busy="true" style="height: 1.5rem; width: 40%; margin-bottom: 0.5rem;">Loading text</div>
+    <div aria-busy="true" style="height: 1.5rem; width: 80%;">Loading text</div>
+    <hr>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="demo-section">
+    <h2>Toolbar</h2>
+    <div role="toolbar" aria-label="Text formatting">
+      <button aria-pressed="true" data-tooltip="Bold">B</button>
+      <button aria-pressed="false" data-tooltip="Italic"><em>I</em></button>
+      <button aria-pressed="false" data-tooltip="Underline"><u>U</u></button>
+      <div role="separator" aria-orientation="vertical"></div>
+      <button data-tooltip="Align left">L</button>
+      <button data-tooltip="Align center">C</button>
+      <button data-tooltip="Align right">R</button>
+      <div role="separator" aria-orientation="vertical"></div>
+      <button data-tooltip="Link">@</button>
+      <button data-tooltip="Image">#</button>
+    </div>
+    <hr>
+  </div>
+
+  <!-- Menu -->
+  <div class="demo-section">
+    <h2>Menu</h2>
+    <h3>Vertical Menu</h3>
+    <ul role="menu" aria-label="File actions" style="display: inline-block;">
+      <li role="menuitem">New File <kbd>Ctrl+N</kbd></li>
+      <li role="menuitem">Open... <kbd>Ctrl+O</kbd></li>
+      <li role="menuitem">Save <kbd>Ctrl+S</kbd></li>
+      <li role="separator"></li>
+      <li role="menuitem">Export as PDF</li>
+      <li role="menuitem" aria-disabled="true">Print (unavailable)</li>
+    </ul>
+    <h3>Menubar</h3>
+    <ul role="menubar" aria-label="Application menu">
+      <li role="menuitem" aria-current="true">File</li>
+      <li role="menuitem">Edit</li>
+      <li role="menuitem">View</li>
+      <li role="menuitem">Help</li>
+    </ul>
+    <hr>
+  </div>
+
+  <!-- Listbox -->
+  <div class="demo-section">
+    <h2>Listbox</h2>
+    <label id="listbox-label">Select a team member</label>
+    <ul role="listbox" aria-labelledby="listbox-label" style="max-width: 20rem;">
+      <li role="option" aria-selected="false"><span data-avatar style="margin-right: 0.25rem;">AJ</span> Alice Johnson <small>Admin</small></li>
+      <li role="option" aria-selected="true"><span data-avatar style="margin-right: 0.25rem;">BS</span> Bob Smith <small>Editor</small></li>
+      <li role="option" aria-selected="false"><span data-avatar style="margin-right: 0.25rem;">CW</span> Carol White <small>Viewer</small></li>
+      <li role="option" aria-disabled="true"><span data-avatar style="margin-right: 0.25rem;">DX</span> Dave Xu <small>Deactivated</small></li>
+    </ul>
+    <hr>
+  </div>
+
+  <!-- Feed -->
+  <div class="demo-section">
+    <h2>Feed</h2>
+    <div role="feed" aria-label="Activity" style="border: 1px solid var(--color-border); border-radius: var(--radius);">
+      <article aria-current="true">
+        <header>
+          <span data-avatar>AJ</span>
+          <strong>Alice Johnson</strong> commented on your submission
+          <time datetime="2025-02-10T09:30">2 min ago</time>
+        </header>
+        <section>Looks good overall, but the premium calculation on row 42 needs a second look.</section>
+      </article>
+      <article>
+        <header>
+          <span data-avatar>BS</span>
+          <strong>Bob Smith</strong> approved the renewal
+          <time datetime="2025-02-10T08:15">1 hr ago</time>
+        </header>
+        <section>Renewal for Acme Corp approved with standard terms.</section>
+      </article>
+      <article>
+        <header>
+          <span data-avatar>CW</span>
+          <strong>Carol White</strong> uploaded a document
+          <time datetime="2025-02-09T16:00">Yesterday</time>
+        </header>
+        <section>Added loss_history_2024.xlsx to the submission attachments.</section>
+      </article>
+    </div>
+    <hr>
+  </div>
+
+  <!-- App Shell -->
+  <div class="demo-section">
+    <h2>App Shell</h2>
+    <p>The <code>.app-shell</code> class creates a full-page layout with sticky header and sidebar. Apply it to <code>&lt;body&gt;</code> or a wrapper <code>&lt;div&gt;</code>:</p>
+    <pre><code>&lt;body class="app-shell"&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;aside&gt;...&lt;/aside&gt;
+  &lt;main&gt;...&lt;/main&gt;
+&lt;/body&gt;</code></pre>
+    <p>The header spans full width and sticks to the top. The sidebar is sticky below the header. Main content scrolls independently. Omit <code>&lt;aside&gt;</code> for a sidebar-free layout.</p>
+    <hr>
+  </div>
+
+  <!-- Aside — Navigation Sidebar -->
+  <div class="demo-section">
+    <h2>Aside (Navigation)</h2>
+    <aside aria-label="Demo navigation">
+      <nav>
+        <details open>
+          <summary>Workbench</summary>
+          <ul>
+            <li><a href="#" aria-current="page">Home</a></li>
+            <li><a href="#">Team Inbox</a></li>
+            <li><a href="#">My Work</a></li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Underwriting</summary>
+          <ul>
+            <li><a href="#">Submissions</a></li>
+            <li><a href="#">Renewals</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Analytics</summary>
+          <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Data Explorer</a></li>
+          </ul>
+        </details>
+      </nav>
+    </aside>
+  </div>
+
+  <!-- Aside — Detail Panel -->
+  <div class="demo-section">
+    <h2>Aside (Detail Panel)</h2>
+    <aside aria-label="Customer overview">
+      <h4 style="margin-bottom: 0.75rem;">Acme Insurance Ltd</h4>
+      <dl>
+        <dt>Sector</dt>
+        <dd>Financial Services</dd>
+        <dt>Broker</dt>
+        <dd>Willis Towers Watson</dd>
+        <dt>Annual Revenue</dt>
+        <dd>$4.2M</dd>
+        <dt>Employees</dt>
+        <dd>1,240</dd>
+        <dt>Status</dt>
+        <dd><span data-badge class="success">Active</span></dd>
+      </dl>
+    </aside>
+    <hr>
+  </div>
+
+  <!-- Tooltips -->
+  <div class="demo-section">
+    <h2>Tooltips</h2>
+    <p>Pure CSS tooltips via <code>data-tooltip</code> attribute. No JavaScript required.</p>
+    <div class="demo-row">
+      <button data-tooltip="Default (top)">Top</button>
+      <button data-tooltip="Positioned right" data-placement="right">Right</button>
+      <button data-tooltip="Positioned bottom" data-placement="bottom">Bottom</button>
+      <button data-tooltip="Positioned left" data-placement="left">Left</button>
+    </div>
+    <p>Works on any element: <a href="#" data-tooltip="Link tooltip">hover this link</a> or <em data-tooltip="Inline tooltip">this text</em>.</p>
+    <hr>
+  </div>
+
+  <!-- Dropdown -->
+  <div class="demo-section">
+    <h2>Dropdown</h2>
+    <div class="demo-row">
+      <details class="dropdown">
+        <summary role="button">Actions</summary>
+        <ul>
+          <li><a href="#">Edit</a></li>
+          <li><a href="#">Duplicate</a></li>
+          <li><a href="#">Archive</a></li>
+          <hr>
+          <li><a href="#">Delete</a></li>
+        </ul>
+      </details>
+      <details class="dropdown">
+        <summary role="button" class="outline">Options</summary>
+        <ul>
+          <li><button>Sort ascending</button></li>
+          <li><button>Sort descending</button></li>
+          <li><button>Reset filters</button></li>
+        </ul>
+      </details>
+    </div>
+    <hr>
+  </div>
+
+  <!-- Group -->
+  <div class="demo-section">
+    <h2>Group</h2>
+    <h3>Button Group</h3>
+    <div class="demo-row">
+      <div role="group">
+        <button class="outline" aria-current="true">Day</button>
+        <button class="outline">Week</button>
+        <button class="outline">Month</button>
+      </div>
+    </div>
+    <h3>Search Group</h3>
+    <fieldset role="group">
+      <input type="search" placeholder="Search...">
+      <button>Search</button>
+    </fieldset>
+    <hr>
+  </div>
+
+  <!-- Toggle -->
+  <div class="demo-section">
+    <h2>Toggle</h2>
+    <div class="demo-row">
+      <button aria-pressed="true" data-tooltip="Bold">B</button>
+      <button aria-pressed="false" data-tooltip="Italic"><em>I</em></button>
+      <button aria-pressed="false" data-tooltip="Underline"><u>U</u></button>
+      <div role="separator" aria-orientation="vertical"></div>
+      <button aria-pressed="false" data-tooltip="Align left">L</button>
+      <button aria-pressed="true" data-tooltip="Align center">C</button>
+      <button aria-pressed="false" data-tooltip="Align right">R</button>
+    </div>
+    <hr>
+  </div>
+
+  <!-- Separator -->
+  <div class="demo-section">
+    <h2>Separator</h2>
+    <p>Horizontal separator:</p>
+    <div role="separator"></div>
+    <p>Vertical separator (between inline items):</p>
+    <div class="demo-row">
+      <span>Item A</span>
+      <div role="separator" aria-orientation="vertical"></div>
+      <span>Item B</span>
+      <div role="separator" aria-orientation="vertical"></div>
+      <span>Item C</span>
+    </div>
+    <hr>
+  </div>
+
+  <!-- Avatar -->
+  <div class="demo-section">
+    <h2>Avatar</h2>
+    <div class="demo-row">
+      <span data-avatar class="sm">XS</span>
+      <span data-avatar>AJ</span>
+      <span data-avatar class="lg">BS</span>
+      <span data-avatar class="xl">CW</span>
+    </div>
+    <p>Avatars in context:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Role</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span data-avatar style="margin-right: 0.5rem;">AJ</span> Alice Johnson</td>
+          <td>Admin</td>
+          <td><span data-badge class="success">Active</span></td>
+        </tr>
+        <tr>
+          <td><span data-avatar style="margin-right: 0.5rem;">BS</span> Bob Smith</td>
+          <td>Editor</td>
+          <td><span data-badge class="warning">Pending</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+  </div>
+
+  <!-- Tab helper script (inline for demo, normally import from helpers/tabs.ts) -->
+  <script>
+    // Inline version of helpers/tabs.ts for the demo
+    function initTabs(tablist) {
+      const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+
+      function selectTab(tab) {
+        for (const t of tabs) {
+          const panelId = t.getAttribute("aria-controls");
+          const selected = t === tab;
+          t.setAttribute("aria-selected", String(selected));
+          t.setAttribute("tabindex", selected ? "0" : "-1");
+          if (panelId) {
+            const panel = document.getElementById(panelId);
+            if (panel) panel.hidden = !selected;
+          }
+        }
+        tab.focus();
+      }
+
+      function handleClick(event) {
+        const tab = event.target.closest('[role="tab"]');
+        if (tab) selectTab(tab);
+      }
+
+      function handleKeydown(event) {
+        const current = tabs.indexOf(document.activeElement);
+        if (current === -1) return;
+
+        let next;
+        if (event.key === "ArrowRight") next = (current + 1) % tabs.length;
+        if (event.key === "ArrowLeft") next = (current - 1 + tabs.length) % tabs.length;
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = tabs.length - 1;
+
+        if (next !== undefined) {
+          event.preventDefault();
+          selectTab(tabs[next]);
+        }
+      }
+
+      tablist.addEventListener("click", handleClick);
+      tablist.addEventListener("keydown", handleKeydown);
+
+      return () => {
+        tablist.removeEventListener("click", handleClick);
+        tablist.removeEventListener("keydown", handleKeydown);
+      };
+    }
+
+    // Initialize tabs on page load
+    initTabs(document.getElementById("demo-tablist"));
+
+    // Close dropdowns on outside click and on item select
+    document.addEventListener("click", function (event) {
+      for (const dropdown of document.querySelectorAll("details.dropdown[open]")) {
+        if (!dropdown.contains(event.target)) {
+          dropdown.removeAttribute("open");
+        }
+      }
+    });
+    document.addEventListener("click", function (event) {
+      var item = event.target.closest("details.dropdown > ul a, details.dropdown > ul button, details.dropdown > menu a, details.dropdown > menu button");
+      if (item) {
+        item.closest("details.dropdown").removeAttribute("open");
+      }
+    });
+
+    // Theme switcher
+    document.querySelector(".theme-switcher").addEventListener("click", function (event) {
+      const btn = event.target.closest("[data-theme]");
+      if (!btn) return;
+
+      for (const b of this.querySelectorAll("[data-theme]")) {
+        b.setAttribute("aria-pressed", String(b === btn));
+      }
+
+      var root = document.documentElement;
+      root.classList.remove("light", "dark");
+      if (btn.dataset.theme !== "system") {
+        root.classList.add(btn.dataset.theme);
+      }
+    });
+  </script>
+</body>
+</html>

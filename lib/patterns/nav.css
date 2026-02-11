@@ -1,0 +1,54 @@
+/* Nav — top-level horizontal navigation bar */
+/* Usage: <nav aria-label="Main"><ul><li>...</li></ul></nav> */
+/* Two <ul> children flex apart (brand left, links right) */
+
+nav:not([aria-label="Breadcrumb"]):not(aside nav) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+nav:not([aria-label="Breadcrumb"]):not(aside nav) > ul {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav:not([aria-label="Breadcrumb"]):not(aside nav) > ul > li {
+  margin: 0;
+}
+
+nav:not([aria-label="Breadcrumb"]):not(aside nav) > ul > li > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  font-size: var(--font-size-3);
+  color: var(--color-muted-foreground);
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: background-color 0.15s, color 0.15s;
+}
+
+nav:not([aria-label="Breadcrumb"]):not(aside nav) > ul > li > a:hover {
+  background-color: var(--color-muted);
+  color: var(--color-foreground);
+}
+
+nav:not([aria-label="Breadcrumb"]):not(aside nav) > ul > li > a[aria-current="page"] {
+  color: var(--color-foreground);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Brand / title in first list item */
+nav:not([aria-label="Breadcrumb"]):not(aside nav) > ul > li > strong,
+nav:not([aria-label="Breadcrumb"]):not(aside nav) > ul > li > a > strong {
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-foreground);
+}

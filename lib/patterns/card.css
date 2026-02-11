@@ -1,0 +1,42 @@
+/* Card — article element */
+
+article {
+  background-color: var(--color-card);
+  color: var(--color-card-foreground);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+article > header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+article > header > h1,
+article > header > h2,
+article > header > h3,
+article > header > h4,
+article > header > h5,
+article > header > h6 {
+  margin: 0;
+}
+
+article > header > p {
+  margin: 0.25rem 0 0;
+  font-size: var(--font-size-2);
+  color: var(--color-muted-foreground);
+}
+
+article > section {
+  padding: 1rem 1.5rem;
+}
+
+article > footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
