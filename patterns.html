@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patterns - Semantic CSS</title>
+  <link rel="stylesheet" href="lib/semantic.css">
+  <style>
+    /* Demo-only layout styles */
+    .demo-section { max-width: 48rem; margin: 2rem auto; padding: 0 1rem; }
+    .demo-section + .demo-section { margin-top: 3rem; }
+    .theme-switcher { display: inline-flex; border: 1px solid var(--color-border); border-radius: var(--radius); overflow: hidden; padding: 0; margin: 0; }
+    .theme-switcher button { border: none; border-radius: 0; background: transparent; color: var(--color-muted-foreground); padding: 0.375rem 0.75rem; font-size: var(--font-size-2); }
+    .theme-switcher button + button { border-left: 1px solid var(--color-border); }
+    .theme-switcher button[aria-pressed="true"] { background: var(--color-primary); color: var(--color-primary-foreground); }
+
+    .pattern-card { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
+    .pattern-card h4 { margin: 0 0 0.25rem; }
+    .pattern-card p { margin: 0 0 0.75rem; color: var(--color-muted-foreground); font-size: var(--font-size-2); }
+    .pattern-card pre { margin: 0; font-size: var(--font-size-2); }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <nav aria-label="Main" style="border-bottom: 1px solid var(--color-border);">
+    <ul>
+      <li><a href="demo.html"><strong>Semantic CSS</strong></a></li>
+    </ul>
+    <ul>
+      <li><a href="demo.html">Components</a></li>
+      <li><a href="tokens.html">Tokens</a></li>
+      <li><a href="patterns.html" aria-current="page">Patterns</a></li>
+      <li>
+        <details class="dropdown">
+          <summary role="button" class="ghost">More</summary>
+          <ul>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Changelog</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="demo-section">
+    <h1>Patterns</h1>
+    <p>The 22 WCAG APG patterns included in <code>lib/patterns/</code>. Each pattern targets semantic HTML elements, ARIA roles, or data attributes -- no utility classes needed.</p>
+    <fieldset role="group" class="theme-switcher" aria-label="Theme">
+      <button aria-pressed="false" data-theme="light">Light</button>
+      <button aria-pressed="true" data-theme="system">System</button>
+      <button aria-pressed="false" data-theme="dark">Dark</button>
+    </fieldset>
+    <hr>
+  </div>
+
+  <!-- Layout -->
+  <div class="demo-section">
+    <h2>Layout</h2>
+
+    <div class="pattern-card">
+      <h4>App Shell</h4>
+      <p>Full-page layout with sticky header, optional sidebar, and scrollable main content. Apply <code>.app-shell</code> to the body or a wrapper element.</p>
+      <pre><code>&lt;body class="app-shell"&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;aside&gt;...&lt;/aside&gt;
+  &lt;main&gt;...&lt;/main&gt;
+&lt;/body&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Aside</h4>
+      <p>Sidebar navigation with collapsible sections, or a detail panel with descriptive content. Uses the <code>&lt;aside&gt;</code> element.</p>
+      <pre><code>&lt;aside aria-label="Navigation"&gt;
+  &lt;nav&gt;
+    &lt;details open&gt;
+      &lt;summary&gt;Section&lt;/summary&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#" aria-current="page"&gt;Active&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Other&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/details&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;</code></pre>
+    </div>
+
+    <hr>
+  </div>
+
+  <!-- Navigation -->
+  <div class="demo-section">
+    <h2>Navigation</h2>
+
+    <div class="pattern-card">
+      <h4>Nav</h4>
+      <p>Top-level horizontal navigation bar using <code>&lt;nav&gt;</code> with unordered lists. Supports branding, links, and dropdowns.</p>
+      <pre><code>&lt;nav aria-label="Main"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/"&gt;&lt;strong&gt;Brand&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#" aria-current="page"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Breadcrumb</h4>
+      <p>Breadcrumb trail using <code>&lt;nav aria-label="Breadcrumb"&gt;</code> with an ordered list. The current page uses <code>aria-current="page"</code>.</p>
+      <pre><code>&lt;nav aria-label="Breadcrumb"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span aria-current="page"&gt;Current&lt;/span&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Tabs</h4>
+      <p>WCAG APG tab pattern using <code>role="tablist"</code>, <code>role="tab"</code>, and <code>role="tabpanel"</code>. Requires JS for keyboard navigation.</p>
+      <pre><code>&lt;div role="tablist" aria-label="Settings"&gt;
+  &lt;button role="tab" aria-selected="true"
+          aria-controls="panel-1" id="tab-1"&gt;General&lt;/button&gt;
+  &lt;button role="tab" aria-selected="false"
+          aria-controls="panel-2" id="tab-2"&gt;Advanced&lt;/button&gt;
+&lt;/div&gt;
+&lt;div role="tabpanel" id="panel-1" aria-labelledby="tab-1"&gt;
+  &lt;p&gt;General settings content.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden&gt;
+  &lt;p&gt;Advanced settings content.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Menu</h4>
+      <p>Vertical menu and horizontal menubar using ARIA <code>role="menu"</code>, <code>role="menubar"</code>, and <code>role="menuitem"</code>. Supports separators, keyboard shortcuts, and disabled items.</p>
+      <pre><code>&lt;ul role="menu" aria-label="File actions"&gt;
+  &lt;li role="menuitem"&gt;New File &lt;kbd&gt;Ctrl+N&lt;/kbd&gt;&lt;/li&gt;
+  &lt;li role="menuitem"&gt;Open... &lt;kbd&gt;Ctrl+O&lt;/kbd&gt;&lt;/li&gt;
+  &lt;li role="separator"&gt;&lt;/li&gt;
+  &lt;li role="menuitem" aria-disabled="true"&gt;Print&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul role="menubar" aria-label="App menu"&gt;
+  &lt;li role="menuitem" aria-current="true"&gt;File&lt;/li&gt;
+  &lt;li role="menuitem"&gt;Edit&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    </div>
+
+    <hr>
+  </div>
+
+  <!-- Feedback -->
+  <div class="demo-section">
+    <h2>Feedback</h2>
+
+    <div class="pattern-card">
+      <h4>Alert</h4>
+      <p>Status messages using <code>role="alert"</code>. Variants: default, <code>.info</code>, <code>.success</code>, <code>.warning</code>, <code>.destructive</code>.</p>
+      <pre><code>&lt;div role="alert"&gt;Default alert.&lt;/div&gt;
+&lt;div role="alert" class="success"&gt;Operation completed.&lt;/div&gt;
+&lt;div role="alert" class="destructive"&gt;Something went wrong.&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Dialog</h4>
+      <p>Modal dialog using the native <code>&lt;dialog&gt;</code> element. Structure with <code>&lt;header&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;footer&gt;</code> children.</p>
+      <pre><code>&lt;dialog id="my-dialog"&gt;
+  &lt;header&gt;
+    &lt;h3&gt;Confirm&lt;/h3&gt;
+    &lt;button onclick="this.closest('dialog').close()"
+            aria-label="Close"&gt;&amp;times;&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;section&gt;
+    &lt;p&gt;Are you sure?&lt;/p&gt;
+  &lt;/section&gt;
+  &lt;footer&gt;
+    &lt;button class="outline"&gt;Cancel&lt;/button&gt;
+    &lt;button&gt;Confirm&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Progress</h4>
+      <p>Native <code>&lt;progress&gt;</code> and <code>&lt;meter&gt;</code> elements. Progress shows completion; meter shows a value within a known range.</p>
+      <pre><code>&lt;label for="p1"&gt;Upload (60%)&lt;/label&gt;
+&lt;progress id="p1" value="60" max="100"&gt;60%&lt;/progress&gt;
+
+&lt;label for="m1"&gt;Disk usage&lt;/label&gt;
+&lt;meter id="m1" min="0" max="100" low="25"
+       high="75" optimum="50" value="40"&gt;40%&lt;/meter&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Skeleton</h4>
+      <p>Loading placeholder using <code>aria-busy="true"</code>. Applies a shimmer animation to any element.</p>
+      <pre><code>&lt;div aria-busy="true" style="height: 1.5rem; width: 60%;"&gt;
+  Loading...
+&lt;/div&gt;
+
+&lt;button aria-busy="true"&gt;Saving...&lt;/button&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Tooltip</h4>
+      <p>Pure CSS tooltips via the <code>data-tooltip</code> attribute. Positioning with <code>data-placement</code> (top, right, bottom, left).</p>
+      <pre><code>&lt;button data-tooltip="Save changes"&gt;Save&lt;/button&gt;
+
+&lt;button data-tooltip="Delete item"
+        data-placement="bottom"&gt;Delete&lt;/button&gt;
+
+&lt;a href="#" data-tooltip="Opens in new tab"&gt;Link&lt;/a&gt;</code></pre>
+    </div>
+
+    <hr>
+  </div>
+
+  <!-- Data -->
+  <div class="demo-section">
+    <h2>Data</h2>
+
+    <div class="pattern-card">
+      <h4>Card</h4>
+      <p>Content card using the <code>&lt;article&gt;</code> element. Structure with optional <code>&lt;header&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;footer&gt;</code> children.</p>
+      <pre><code>&lt;article&gt;
+  &lt;header&gt;
+    &lt;h4&gt;Card Title&lt;/h4&gt;
+    &lt;p&gt;Description text&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;section&gt;
+    &lt;p&gt;Card body content.&lt;/p&gt;
+  &lt;/section&gt;
+  &lt;footer&gt;
+    &lt;button class="sm"&gt;Action&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Feed</h4>
+      <p>Activity stream using <code>role="feed"</code> with <code>&lt;article&gt;</code> children. Each entry has a header (avatar, name, timestamp) and content section.</p>
+      <pre><code>&lt;div role="feed" aria-label="Activity"&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;span data-avatar&gt;AJ&lt;/span&gt;
+      &lt;strong&gt;Alice&lt;/strong&gt; commented
+      &lt;time datetime="2025-01-15T09:00"&gt;2 min ago&lt;/time&gt;
+    &lt;/header&gt;
+    &lt;section&gt;Looks good!&lt;/section&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Listbox</h4>
+      <p>Selection list using <code>role="listbox"</code> and <code>role="option"</code>. Supports single selection via <code>aria-selected</code> and disabled items.</p>
+      <pre><code>&lt;label id="lb-label"&gt;Choose a member&lt;/label&gt;
+&lt;ul role="listbox" aria-labelledby="lb-label"&gt;
+  &lt;li role="option" aria-selected="true"&gt;Alice&lt;/li&gt;
+  &lt;li role="option" aria-selected="false"&gt;Bob&lt;/li&gt;
+  &lt;li role="option" aria-disabled="true"&gt;Carol&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Badge</h4>
+      <p>Inline label using the <code>data-badge</code> attribute. Variants: default, <code>.secondary</code>, <code>.outline</code>, <code>.destructive</code>, <code>.info</code>, <code>.success</code>, <code>.warning</code>.</p>
+      <pre><code>&lt;span data-badge&gt;Default&lt;/span&gt;
+&lt;span data-badge class="success"&gt;Active&lt;/span&gt;
+&lt;span data-badge class="destructive"&gt;Overdue&lt;/span&gt;
+&lt;span data-badge class="outline"&gt;Draft&lt;/span&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Avatar</h4>
+      <p>Circular initials display using <code>data-avatar</code>. Sizes: <code>.sm</code>, default, <code>.lg</code>, <code>.xl</code>.</p>
+      <pre><code>&lt;span data-avatar class="sm"&gt;XS&lt;/span&gt;
+&lt;span data-avatar&gt;AJ&lt;/span&gt;
+&lt;span data-avatar class="lg"&gt;BS&lt;/span&gt;
+&lt;span data-avatar class="xl"&gt;CW&lt;/span&gt;</code></pre>
+    </div>
+
+    <hr>
+  </div>
+
+  <!-- Controls -->
+  <div class="demo-section">
+    <h2>Controls</h2>
+
+    <div class="pattern-card">
+      <h4>Accordion</h4>
+      <p>Collapsible sections using native <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements. No JavaScript required.</p>
+      <pre><code>&lt;details&gt;
+  &lt;summary&gt;Section title&lt;/summary&gt;
+  &lt;p&gt;Collapsible content goes here.&lt;/p&gt;
+&lt;/details&gt;
+&lt;details open&gt;
+  &lt;summary&gt;Open by default&lt;/summary&gt;
+  &lt;p&gt;This section starts expanded.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Dropdown</h4>
+      <p>Dropdown menu using <code>&lt;details class="dropdown"&gt;</code>. The summary acts as the trigger button; the list holds menu items.</p>
+      <pre><code>&lt;details class="dropdown"&gt;
+  &lt;summary role="button"&gt;Actions&lt;/summary&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Duplicate&lt;/a&gt;&lt;/li&gt;
+    &lt;hr&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Delete&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/details&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Group</h4>
+      <p>Inline grouping of buttons or inputs using <code>role="group"</code> or <code>&lt;fieldset role="group"&gt;</code>. Adjacent items share borders.</p>
+      <pre><code>&lt;div role="group"&gt;
+  &lt;button class="outline" aria-current="true"&gt;Day&lt;/button&gt;
+  &lt;button class="outline"&gt;Week&lt;/button&gt;
+  &lt;button class="outline"&gt;Month&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;fieldset role="group"&gt;
+  &lt;input type="search" placeholder="Search..."&gt;
+  &lt;button&gt;Search&lt;/button&gt;
+&lt;/fieldset&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Toggle</h4>
+      <p>Toggle button using <code>aria-pressed</code>. Visually indicates on/off state.</p>
+      <pre><code>&lt;button aria-pressed="true"&gt;Bold&lt;/button&gt;
+&lt;button aria-pressed="false"&gt;Italic&lt;/button&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Toolbar</h4>
+      <p>Grouped controls using <code>role="toolbar"</code>. Combine with toggle buttons and vertical separators.</p>
+      <pre><code>&lt;div role="toolbar" aria-label="Formatting"&gt;
+  &lt;button aria-pressed="true"&gt;B&lt;/button&gt;
+  &lt;button aria-pressed="false"&gt;I&lt;/button&gt;
+  &lt;div role="separator" aria-orientation="vertical"&gt;&lt;/div&gt;
+  &lt;button&gt;Link&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="pattern-card">
+      <h4>Separator</h4>
+      <p>Visual divider using <code>role="separator"</code>. Default is horizontal; add <code>aria-orientation="vertical"</code> for vertical.</p>
+      <pre><code>&lt;!-- Horizontal --&gt;
+&lt;div role="separator"&gt;&lt;/div&gt;
+
+&lt;!-- Vertical (between inline items) --&gt;
+&lt;span&gt;Item A&lt;/span&gt;
+&lt;div role="separator" aria-orientation="vertical"&gt;&lt;/div&gt;
+&lt;span&gt;Item B&lt;/span&gt;</code></pre>
+    </div>
+
+    <hr>
+  </div>
+
+  <script>
+    // Close dropdowns on outside click and on item select
+    document.addEventListener("click", function (event) {
+      for (const dropdown of document.querySelectorAll("details.dropdown[open]")) {
+        if (!dropdown.contains(event.target)) {
+          dropdown.removeAttribute("open");
+        }
+      }
+    });
+    document.addEventListener("click", function (event) {
+      var item = event.target.closest("details.dropdown > ul a, details.dropdown > ul button, details.dropdown > menu a, details.dropdown > menu button");
+      if (item) {
+        item.closest("details.dropdown").removeAttribute("open");
+      }
+    });
+
+    // Theme switcher
+    document.querySelector(".theme-switcher").addEventListener("click", function (event) {
+      const btn = event.target.closest("[data-theme]");
+      if (!btn) return;
+
+      for (const b of this.querySelectorAll("[data-theme]")) {
+        b.setAttribute("aria-pressed", String(b === btn));
+      }
+
+      var root = document.documentElement;
+      root.classList.remove("light", "dark");
+      if (btn.dataset.theme !== "system") {
+        root.classList.add(btn.dataset.theme);
+      }
+    });
+  </script>
+</body>
+</html>
