@@ -104,10 +104,10 @@
 
   /* Font families */
   --font-sans: "Inter", system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-serif: "Acid Grotesk", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: "Inter", sans-serif;
   --font-family-text: Inter, sans-serif;
-  --font-family-heading: Acid Grotesk, sans-serif;
+  --font-family-heading: Outfit, sans-serif;
   --font-family-monospace: Inter, sans-serif;
 
   /* Font sizes */
