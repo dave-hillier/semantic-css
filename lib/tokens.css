@@ -1,6 +1,8 @@
 /* Design tokens */
 
 :root {
+  color-scheme: light;
+
   /* Scaling factor */
   --scaling: 1;
 
@@ -242,6 +244,7 @@
 /* Dark mode — system preference (applies when no .light or .dark class) */
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
+    color-scheme: dark;
     --color-accent-foreground: var(--color-accent-100);
     --color-accent: var(--color-accent-900);
     --color-background: var(--color-base-black);
@@ -286,6 +289,7 @@
 
 /* Dark mode — explicit override */
 .dark {
+  color-scheme: dark;
   --color-accent-foreground: var(--color-accent-100);
   --color-accent: var(--color-accent-900);
   --color-background: var(--color-base-black);
