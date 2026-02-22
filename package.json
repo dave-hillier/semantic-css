@@ -1,7 +1,7 @@
 {
-  "name": "@hyperexponential/semantic-css",
+  "name": "daves-semantic-css",
   "version": "0.1.0",
-  "description": "Semantic CSS library",
+  "description": "Dave's Semantic CSS library",
   "main": "lib/semantic.css",
   "files": [
     "lib/",
